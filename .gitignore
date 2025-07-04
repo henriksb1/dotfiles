@@ -1,0 +1,18 @@
+# https://raw.githubusercontent.com/github/gitignore/master/Global/Emacs.gitignore
+
+auto-save-list
+backups
+elpa
+recentf
+transient
+.lsp-session-v1
+projects
+cache/
+projectile-bookmarks.eld
+history
+straight/
+tramp
+.cache
+url/
+workspace/
+projectile.cache
