@@ -14,6 +14,10 @@
 ;; Set up appearance early
 (require 'appearance)
 
+;; Configure Emacs for darwin
+(when (string= "darwin" system-type)
+  (require 'darwin))
+
 ;; Configure the package manager
 (require 'packages)
 

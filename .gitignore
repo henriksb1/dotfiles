@@ -1,5 +1,6 @@
 # https://raw.githubusercontent.com/github/gitignore/master/Global/Emacs.gitignore
 
+*.elc
 auto-save-list
 backups
 elpa
