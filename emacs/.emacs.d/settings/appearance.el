@@ -16,6 +16,9 @@
                            (invert-face 'mode-line)
                            (run-with-timer 0.05 nil 'invert-face 'mode-line)))
 
+;; use 80 characters for line wrapping with M-q
+(setq-default fill-column 80)
+
 ;; Just a better font
 ;;(setq default-frame-alist '((font . "Go Mono 8")))
 (setq default-frame-alist '((font . "Go Mono 16")))

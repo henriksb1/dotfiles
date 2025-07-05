@@ -47,10 +47,3 @@
 ;; Write all autosave files in the tmp dir
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
-
-;;;; auto-indent for lisp modes
-(defun set-newline-and-indent ()
-  (local-set-key (kbd "RET") 'newline-and-indent))
-(add-hook 'emacs-lisp-mode-hook 'set-newline-and-indent)
-(add-hook 'lisp-mode-hook 'set-newline-and-indent)
-(add-hook 'scheme-mode-hook 'set-newline-and-indent)
