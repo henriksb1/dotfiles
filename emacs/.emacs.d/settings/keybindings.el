@@ -1,7 +1,7 @@
 (provide 'keybindings)
 
 ;; C-z by default suspends the session
-(bind-key* "C-z" 'undo)
+;;(bind-key* "C-z" 'undo)
 
 ;; Clever newlines
 (global-set-key (kbd "C-o") 'open-line-and-indent)

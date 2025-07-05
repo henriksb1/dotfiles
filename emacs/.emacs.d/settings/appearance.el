@@ -5,6 +5,9 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+;; Start maximised window
+(add-hook 'window-setup-hook 'toggle-frame-maximized t)
+
 ;; No splash screen
 (setq inhibit-startup-message t)
 
@@ -24,7 +27,7 @@
 (blink-cursor-mode 0)
 
 ;; display line numbers and column numbers in all modes
-(setq line-number-mode t)
+(global-display-line-numbers-mode t)
 (setq column-number-mode t)
 
 ;; Always show the buffer name in the frame title (Emacs default is to show the
