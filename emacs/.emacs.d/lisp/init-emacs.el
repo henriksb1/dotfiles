@@ -61,7 +61,7 @@
               (let ((dir (file-name-directory buffer-file-name)))
                 (when (not (file-exists-p dir))
                   (make-directory dir t))))))
-                
+
 ;; Always show the buffer name in the frame title (Emacs default is to show the
 ;; hostname when there is only one frame).
 (setq frame-title-format
@@ -73,6 +73,13 @@
 			 "*"))
 	      " - Emacs")
 	    ))
+
+(setq backup-directory-alist
+      `(("." . ,(expand-file-name
+                 (concat user-emacs-directory "backups")))))
+
+;; Add final newlines to all files by default
+(setq require-final-newline t)
 
 ;; Don't write lock-files, I'm the only one here
 (setq create-lockfiles nil)

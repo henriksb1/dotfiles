@@ -5,6 +5,7 @@
 (require 'init-emacs)
 (require 'init-packages)
 (require 'init-utils)
+(require 'init-keybindings)
 
 ;; init packages
 (require 'init-git)
