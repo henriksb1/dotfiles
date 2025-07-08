@@ -2,8 +2,8 @@
 
 ;; general settings
 (require 'init-fast-startup)
-(require 'init-emacs)
 (require 'init-packages)
+(require 'init-emacs)
 (require 'init-utils)
 (require 'init-keybindings)
 
@@ -12,3 +12,5 @@
 (require 'init-vertico)
 (require 'init-savehist)
 (require 'init-orderless)
+
+(provide 'init)

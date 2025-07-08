@@ -3,6 +3,12 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
+;; Make Emacs use the $PATH set up by the user's shell
+(when (memq window-system '(mac ns x))
+  (use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-initialize)))
+
 ;; Keep emacs Custom-settings in separate file, not appended to init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 
