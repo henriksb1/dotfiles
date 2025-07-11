@@ -407,8 +407,8 @@ require("lazy").setup({
 			end
 
 			if vim.fn.executable('typescript-language-server') == 1 then
-				vim.lsp.config('tsserver', {})
-				vim.lsp.enable('tsserver')
+				-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
+				vim.lsp.enable('ts_ls')
 			end
 
 			-- Ruff for Python
