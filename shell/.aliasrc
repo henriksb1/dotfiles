@@ -17,11 +17,17 @@ alias \
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
 	ip="ip -color=auto"
+
+if [[ "$(uname)" == "Darwin" ]] && command -v gls >/dev/null 2>&1; then
+	# gls requires coreutils
+	alias ls='gls --group-directories-first --color=auto'
+else
+	alias ls='ls --group-directories-first --color=auto'
+fi
 
 # These common commands are just too long! Abbreviate them.
 alias \
