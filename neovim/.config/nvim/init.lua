@@ -1,5 +1,8 @@
+local opt = vim.opt
+local keymap = vim.keymap
+
 -- always set leader first!
-vim.keymap.set("n", "<Space>", "<Nop>", { silent = true })
+keymap.set("n", "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 
 -------------------------------------------------------------------------------
@@ -8,75 +11,75 @@ vim.g.mapleader = " "
 --
 -------------------------------------------------------------------------------
 -- never ever folding
-vim.opt.foldenable = false
-vim.opt.foldmethod = 'manual'
-vim.opt.foldlevelstart = 99
+opt.foldenable = false
+opt.foldmethod = 'manual'
+opt.foldlevelstart = 99
 
 -- keep more context on screen while scrolling
-vim.opt.scrolloff = 2
+opt.scrolloff = 2
 
 -- never show me line breaks if they're not there
-vim.opt.wrap = false
+opt.wrap = false
 
 -- always draw sign column. prevents buffer moving when adding/deleting sign
-vim.opt.signcolumn = 'yes'
+opt.signcolumn = 'yes'
 
 -- sweet sweet relative line numbers
-vim.opt.relativenumber = true
+opt.relativenumber = true
 
 -- and show the absolute line number for the current line
-vim.opt.number = true
+opt.number = true
 
 -- keep current content top + left when splitting
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- infinite undo!
 -- NOTE: ends up in ~/.local/state/nvim/undo/
-vim.opt.undofile = true
+opt.undofile = true
 
 --" Decent wildmenu
 -- in completion, when there is more than one match,
 -- list all matches, and only complete to longest common match
-vim.opt.wildmode = 'list:longest'
+opt.wildmode = 'list:longest'
 
 -- when opening a file with a command (like :e),
 -- don't suggest files like there:
-vim.opt.wildignore = '.hg,.svn,*~,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,vendor,dist,_site'
+opt.wildignore = '.hg,.svn,*~,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,vendor,dist,_site'
 
 -- tabs: go big or go home
-vim.opt.shiftwidth = 8
-vim.opt.softtabstop = 8
-vim.opt.tabstop = 8
-vim.opt.expandtab = false
+opt.shiftwidth = 8
+opt.softtabstop = 8
+opt.tabstop = 8
+opt.expandtab = false
 
 -- case-insensitive search/replace
-vim.opt.ignorecase = true
+opt.ignorecase = true
 -- unless uppercase in search term
-vim.opt.smartcase = true
+opt.smartcase = true
 
 -- never ever make my terminal beep
-vim.opt.vb = true
+opt.vb = true
 
 -- more useful diffs (nvim -d)
 --- by ignoring whitespace
-vim.opt.diffopt:append('iwhite')
+opt.diffopt:append('iwhite')
 --- and using a smarter algorithm
 --- https://vimways.org/2018/the-power-of-diff/
 --- https://stackoverflow.com/questions/32365271/whats-the-difference-between-git-diff-patience-and-git-diff-histogram
 --- https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-vim.opt.diffopt:append('algorithm:histogram')
-vim.opt.diffopt:append('indent-heuristic')
+opt.diffopt:append('algorithm:histogram')
+opt.diffopt:append('indent-heuristic')
 
 -- show a column at 80 characters as a guide for long lines
-vim.opt.colorcolumn = '80'
+opt.colorcolumn = '80'
 
 --- except in Rust where the rule is 100 characters
 vim.api.nvim_create_autocmd('Filetype', { pattern = 'rust', command = 'set colorcolumn=100' })
 
 -- show more hidden characters
 -- also, show tabs nicer
-vim.opt.listchars = 'tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•'
+opt.listchars = 'tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•'
 
 -------------------------------------------------------------------------------
 --
@@ -84,91 +87,91 @@ vim.opt.listchars = 'tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•'
 --
 -------------------------------------------------------------------------------
 -- quick-open
-vim.keymap.set('', '<C-p>', '<cmd>Files<cr>')
+keymap.set('', '<C-p>', '<cmd>Files<cr>')
 
 -- rigprep
-vim.keymap.set('n', '<leader>f', '<cmd>Rg<cr>')
+keymap.set('n', '<leader>f', '<cmd>Rg<cr>')
 
 -- search buffers
-vim.keymap.set('n', '<leader>b', '<cmd>Buffers<cr>')
+keymap.set('n', '<leader>b', '<cmd>Buffers<cr>')
 
 -- quick-save
-vim.keymap.set('n', '<leader>w', '<cmd>w<cr>')
+keymap.set('n', '<leader>w', '<cmd>w<cr>')
 
 -- make missing : less annoying
-vim.keymap.set('n', ';', ':')
+keymap.set('n', ';', ':')
 
 -- Ctrl+j and Ctrl+k as Esc
-vim.keymap.set('n', '<C-j>', '<Esc>')
-vim.keymap.set('i', '<C-j>', '<Esc>')
-vim.keymap.set('v', '<C-j>', '<Esc>')
-vim.keymap.set('s', '<C-j>', '<Esc>')
-vim.keymap.set('x', '<C-j>', '<Esc>')
-vim.keymap.set('c', '<C-j>', '<Esc>')
-vim.keymap.set('o', '<C-j>', '<Esc>')
-vim.keymap.set('l', '<C-j>', '<Esc>')
-vim.keymap.set('t', '<C-j>', '<Esc>')
+keymap.set('n', '<C-j>', '<Esc>')
+keymap.set('i', '<C-j>', '<Esc>')
+keymap.set('v', '<C-j>', '<Esc>')
+keymap.set('s', '<C-j>', '<Esc>')
+keymap.set('x', '<C-j>', '<Esc>')
+keymap.set('c', '<C-j>', '<Esc>')
+keymap.set('o', '<C-j>', '<Esc>')
+keymap.set('l', '<C-j>', '<Esc>')
+keymap.set('t', '<C-j>', '<Esc>')
 
 -- Ctrl-j is a little awkward unfortunately:
 -- https://github.com/neovim/neovim/issues/5916
 -- So we also map Ctrl+k
-vim.keymap.set('n', '<C-k>', '<Esc>')
-vim.keymap.set('i', '<C-k>', '<Esc>')
-vim.keymap.set('v', '<C-k>', '<Esc>')
-vim.keymap.set('s', '<C-k>', '<Esc>')
-vim.keymap.set('x', '<C-k>', '<Esc>')
-vim.keymap.set('c', '<C-k>', '<Esc>')
-vim.keymap.set('o', '<C-k>', '<Esc>')
-vim.keymap.set('l', '<C-k>', '<Esc>')
-vim.keymap.set('t', '<C-k>', '<Esc>')
+keymap.set('n', '<C-k>', '<Esc>')
+keymap.set('i', '<C-k>', '<Esc>')
+keymap.set('v', '<C-k>', '<Esc>')
+keymap.set('s', '<C-k>', '<Esc>')
+keymap.set('x', '<C-k>', '<Esc>')
+keymap.set('c', '<C-k>', '<Esc>')
+keymap.set('o', '<C-k>', '<Esc>')
+keymap.set('l', '<C-k>', '<Esc>')
+keymap.set('t', '<C-k>', '<Esc>')
 
 -- Ctrl+h to stop searching
-vim.keymap.set('v', '<C-h>', '<cmd>nohlsearch<cr>')
-vim.keymap.set('n', '<C-h>', '<cmd>nohlsearch<cr>')
+keymap.set('v', '<C-h>', '<cmd>nohlsearch<cr>')
+keymap.set('n', '<C-h>', '<cmd>nohlsearch<cr>')
 
 -- Jump to start and end of line using the home row keys
-vim.keymap.set('', 'H', '^')
-vim.keymap.set('', 'L', '$')
+keymap.set('', 'H', '^')
+keymap.set('', 'L', '$')
 
 -- Neat X clipboard integration
 -- <leader>p will paste clipboard into buffer
 -- <leader>c will copy entire buffer into clipboard
-vim.keymap.set('n', '<leader>p', '<cmd>read !wl-paste<cr>')
-vim.keymap.set('n', '<leader>c', '<cmd>w !wl-copy<cr><cr>')
+keymap.set('n', '<leader>p', '<cmd>read !wl-paste<cr>')
+keymap.set('n', '<leader>c', '<cmd>w !wl-copy<cr><cr>')
 
 -- <leader><leader> toggles between buffers
-vim.keymap.set('n', '<leader><leader>', '<c-^>')
+keymap.set('n', '<leader><leader>', '<c-^>')
 
 -- <leader>, shows/hides hidden characters
-vim.keymap.set('n', '<leader>,', ':set invlist<cr>')
+keymap.set('n', '<leader>,', ':set invlist<cr>')
 
 -- always center search results
-vim.keymap.set('n', 'n', 'nzz', { silent = true })
-vim.keymap.set('n', 'N', 'Nzz', { silent = true })
-vim.keymap.set('n', '*', '*zz', { silent = true })
-vim.keymap.set('n', '#', '#zz', { silent = true })
-vim.keymap.set('n', 'g*', 'g*zz', { silent = true })
+keymap.set('n', 'n', 'nzz', { silent = true })
+keymap.set('n', 'N', 'Nzz', { silent = true })
+keymap.set('n', '*', '*zz', { silent = true })
+keymap.set('n', '#', '#zz', { silent = true })
+keymap.set('n', 'g*', 'g*zz', { silent = true })
 
 -- "very magic" (less escaping needed) regexes by default
-vim.keymap.set('n', '?', '?\\v')
-vim.keymap.set('n', '/', '/\\v')
-vim.keymap.set('c', '%s/', '%sm/')
+keymap.set('n', '?', '?\\v')
+keymap.set('n', '/', '/\\v')
+keymap.set('c', '%s/', '%sm/')
 
 -- no arrow keys --- force yourself to use the home row
-vim.keymap.set('n', '<up>', '<nop>')
-vim.keymap.set('n', '<down>', '<nop>')
-vim.keymap.set('i', '<up>', '<nop>')
-vim.keymap.set('i', '<down>', '<nop>')
-vim.keymap.set('i', '<left>', '<nop>')
-vim.keymap.set('i', '<right>', '<nop>')
+keymap.set('n', '<up>', '<nop>')
+keymap.set('n', '<down>', '<nop>')
+keymap.set('i', '<up>', '<nop>')
+keymap.set('i', '<down>', '<nop>')
+keymap.set('i', '<left>', '<nop>')
+keymap.set('i', '<right>', '<nop>')
 
 -- let the left and right arrows be useful: they can switch buffers
-vim.keymap.set('n', '<left>', ':bp<cr>')
-vim.keymap.set('n', '<right>', ':bn<cr>')
+keymap.set('n', '<left>', ':bp<cr>')
+keymap.set('n', '<right>', ':bn<cr>')
 
 -- make j and k move by visual line, not actual line, when text is soft-wrapped
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'k', 'gk')
+keymap.set('n', 'j', 'gj')
+keymap.set('n', 'k', 'gk')
 
 -------------------------------------------------------------------------------
 --
@@ -238,7 +241,7 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
-vim.opt.rtp:prepend(lazypath)
+opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	-- main color scheme
@@ -410,10 +413,10 @@ require("lazy").setup({
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-			vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-			vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-			vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+			keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+			keymap.set('n', '[d', vim.diagnostic.goto_prev)
+			keymap.set('n', ']d', vim.diagnostic.goto_next)
+			keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 			-- Use LspAttach autocommand to only map the following keys
 			-- after the language server attaches to the current buffer
@@ -426,21 +429,21 @@ require("lazy").setup({
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
 					local opts = { buffer = ev.buf }
-					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-					vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-					vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-					vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
-					vim.keymap.set('n', '<leader>wl', function()
+					keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+					keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+					keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+					keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+					keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+					keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+					keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+					keymap.set('n', '<leader>wl', function()
 						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					end, opts)
-					--vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-					vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
-					vim.keymap.set({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, opts)
-					vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-					vim.keymap.set('n', '<leader>f', function()
+					--keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+					keymap.set('n', '<leader>r', vim.lsp.buf.rename, opts)
+					keymap.set({ 'n', 'v' }, '<leader>a', vim.lsp.buf.code_action, opts)
+					keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+					keymap.set('n', '<leader>f', function()
 						vim.lsp.buf.format { async = true }
 					end, opts)
 
