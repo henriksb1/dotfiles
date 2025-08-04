@@ -34,6 +34,12 @@ lfcd () {
     fi
 }
 
+cdp() {
+  local selected
+  selected=$(basename -a ~/projects/*(/) | fzf --prompt="Project > ")
+  [[ -n "$selected" ]] && cd "$HOME/projects/$selected"
+}
+
 bindkey -s '^o' '^ulfcd\n'
 bindkey -s '^a' '^ubc -lq\n'
 bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
