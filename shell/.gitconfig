@@ -1,32 +1,31 @@
 [user]
-	name = Henrik Bråthen
-	email = hsbrathen1@gmail.com
+        name = henrikbr2
+        email = henrik.brathen@statnett.no
 [core]
-	autocrlf = input
-	safecrlf = true
-	editor = nvim -w
+        autocrlf = input
+        safecrlf = true
 [color]
         ui = auto
 [alias]
-	st = status
-	co = checkout
-	br = branch
-	ci = commit
-	cm = "!git commit -m"
-	amend = commit --amend
-	pu = push
-	rb = rebase
-	lg = log --oneline
-	last = log -1 HEAD
-	undo = reset --soft HEAD~1
-	# https://stackoverflow.com/a/11688523/472927
-	ss = "!f() { git stash show stash^{/$*} -p; }; f"
-	sa = "!f() { git stash apply stash^{/$*}; }; f"
-	sl = stash list
+        st = status
+        co = checkout
+        br = branch
+        ci = commit
+        cm = "!git commit -m"
+        amend = commit --amend
+        pu = push
+        rb = rebase
+        lg = log --oneline
+        last = log -1 HEAD
+        undo = reset --soft HEAD~1
+        # https://stackoverflow.com/a/11688523/472927
+        ss = "!f() { git stash show stash^{/$*} -p; }; f"
+        sa = "!f() { git stash apply stash^{/$*}; }; f"
+        sl = stash list
 [pull]
-	ff = only
+        ff = only
 [push]
-	default = simple
+        default = simple
 [help]
-	# https://blog.gitbutler.com/why-is-git-autocorrect-too-fast-for-formula-one-drivers/
-	autocorrect = prompt
+        # https://blog.gitbutler.com/why-is-git-autocorrect-too-fast-for-formula-one-drivers/
+        autocorrect = prompt
