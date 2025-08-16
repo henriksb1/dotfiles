@@ -6,6 +6,10 @@
 (global-set-key (kbd "<C-S-down>") 'move-text-down)
 (global-set-key (kbd "<C-S-up>") 'move-text-up)
 
+;; Navigate paragraphs
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+
 ;; Easy window switching with M-<direction>
 (use-package windmove
   :ensure nil ; built-in

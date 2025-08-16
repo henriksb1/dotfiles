@@ -1,36 +1,7 @@
-;; Startup optimizations
-;; https://www.reddit.com/r/emacs/comments/3kqt6e/2_easy_little_known_steps_to_speed_up_emacs_start/
-
-(setq gc-cons-threshold (* 1024 1024 100))
-
-(setq file-name-handler-alist-original file-name-handler-alist)
-(setq file-name-handler-alist nil)
-
-(add-hook 'emacs-startup-hook
-          (lambda ()
-            (message "Emacs ready in %s with %d garbage collections."
-                     (format "%.2f seconds"
-                             (float-time
-                              (time-subtract after-init-time before-init-time)))
-                     gcs-done)))
-
-(run-with-idle-timer
-   5 nil
-   (lambda ()
-     (setq gc-cons-threshold (* 1024 1024 20))
-     (setq file-name-handler-alist file-name-handler-alist-original)
-     (makunbound 'file-name-handler-alist-original)))
-
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-
-;; Make Emacs use the $PATH set up by the user's shell
-(when (memq window-system '(mac ns x))
-  (use-package exec-path-from-shell
-    :config
-    (exec-path-from-shell-initialize)))
 
 ;; Keep emacs Custom-settings in separate file, not appended to init.el
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -44,11 +15,21 @@
 ;; Set the font
 (setq default-frame-alist '((font . "Go Mono 16")))
 
+(use-package smex
+  :defer t
+  :init (or (boundp 'smex-cache)
+	    (smex-initialize))
+  :bind ("M-x" . smex))
+
 ;; Better than the default.
 (load-theme 'tango-dark t)
 
 ;; No blinking cursor.
 (blink-cursor-mode 0)
+
+;; Save minibuffer history (for compile command etc.)
+(setq history-length 25)
+(savehist-mode 1)
 
 ;; Don't beep. Just blink the modeline on errors.
 (setq ring-bell-function (lambda ()
@@ -68,6 +49,12 @@
 
 ;; Answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+;; Remember and restore the last cursor location of opened files
+(save-place-mode 1)
+
+;; automatically revert buffers when files change
+(global-auto-revert-mode 1)
 
 ;; Remove text in active region if inserting text
 (use-package delsel

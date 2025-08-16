@@ -7,21 +7,13 @@
                                             (unpushed . show)
                                             (unpulled . show)
                                             (stashes . show)))
+  (magit-diff-refine-hunk t)
+  (magit-push-always-verify nil)
+  (magit-revert-buffers 'silent)
   (magit-no-confirm '(stage-all-changes
                       unstage-all-changes))
 
-  :bind (("C-x m" . magit-status))
-
-  :config
-  ;; move cursor into position when entering commit message
-  (add-hook 'git-commit-mode-hook 'my/magit-cursor-fix))
-
-(defun my/magit-cursor-fix ()
-  (beginning-of-buffer)
-  (when (looking-at "#")
-    (while (looking-at "#")
-      (forward-line))
-    (forward-line)))
+  :bind (("C-x m" . magit-status)))
 
 (use-package forge
   :after magit
