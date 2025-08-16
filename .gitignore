@@ -19,3 +19,5 @@ workspace/
 projectile.cache
 bookmarks
 projectile.cache
+places
+smex-items

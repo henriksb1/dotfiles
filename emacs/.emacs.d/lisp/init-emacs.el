@@ -15,12 +15,6 @@
 ;; Set the font
 (setq default-frame-alist '((font . "Go Mono 16")))
 
-(use-package smex
-  :defer t
-  :init (or (boundp 'smex-cache)
-	    (smex-initialize))
-  :bind ("M-x" . smex))
-
 ;; Better than the default.
 (load-theme 'tango-dark t)
 
