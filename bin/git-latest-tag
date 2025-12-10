@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Get the latest git tag from remote repository
+# Usage: git-latest-tag <repository>
+#
+# Source - https://stackoverflow.com/a
+# Posted by Potherca, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-12-10, License - CC BY-SA 4.0
+
+git -c 'versionsort.suffix=-' \
+    ls-remote --exit-code --refs --sort='version:refname' --tags '*.*.*' \
+    | tail --lines=1 \
+    | cut --delimiter='/' --fields=3
+
