@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Creates a GitLab merge request for the current branch
+
+mr_template=""
+
+# Load reviewers from local config if it exists
+reviewers=""
+reviewers_file="$HOME/.glab/reviewers.local"
+if [ -f "$reviewers_file" ]; then
+  # Read non-empty, non-comment lines and join with commas
+  reviewers=$(grep -v '^#' "$reviewers_file" | grep -v '^[[:space:]]*$' | tr '\n' ',' | sed 's/,$//')
+fi
+
+# Build glab command with reviewers if available
+if [ -n "$reviewers" ]; then
+  mr_url=$(echo "$mr_template" | glab mr create --draft --reviewer "$reviewers" --description - 2>&1 | grep -o 'https://[^[:space:]]*')
+else
+  mr_url=$(echo "$mr_template" | glab mr create --draft --description - 2>&1 | grep -o 'https://[^[:space:]]*')
+fi
+
+if [ -n "$mr_url" ]; then
+  echo "Merge request created for branch: $current_branch"
+fi
