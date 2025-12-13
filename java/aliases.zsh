@@ -1,0 +1,1 @@
+alias mcs='mvn checkstyle:check -Dcheckstyle.config.location=$HOME/resources/checkstyle.xml'
