@@ -20,7 +20,18 @@
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = true
+	editor = vim
 [rebase]
 	autoSquash = true
 	autoStash = true
 	updateRefs = true
+[alias]
+	c = commit
+	aa = add --all
+	st = status -sb
+	last = log -1 HEAD
+	pf = push --force-with-lease
+	# https://stackoverflow.com/a/11688523/472927
+	ss = "!f() { git stash show stash^{/$*} -p; }; f"
+	sa = "!f() { git stash apply stash^{/$*}; }; f"
+	sl = stash list
