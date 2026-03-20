@@ -14,6 +14,7 @@
 	prune = true
 	pruneTags = true
 [help]
+	# https://blog.gitbutler.com/why-is-git-autocorrect-too-fast-for-formula-one-drivers/
 	autocorrect = prompt
 [commit]
 	verbose = true
