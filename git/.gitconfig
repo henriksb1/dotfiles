@@ -1,0 +1,26 @@
+[include]
+	path = ~/.gitconfig.local
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[fetch]
+	prune = true
+	pruneTags = true
+[help]
+	autocorrect = prompt
+[commit]
+	verbose = true
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
