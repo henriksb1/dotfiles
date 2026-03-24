@@ -32,6 +32,7 @@
 	st = status -sb
 	last = log -1 HEAD
 	pf = push --force-with-lease
+	lol = log --oneline --graph --decorate --all
 	# https://stackoverflow.com/a/11688523/472927
 	ss = "!f() { git stash show stash^{/$*} -p; }; f"
 	sa = "!f() { git stash apply stash^{/$*}; }; f"
